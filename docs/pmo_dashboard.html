@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMO Analytics Dashboard</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<style>
+:root{--bg:#0f1115;--surface:#1a2234;--border:#1f2d44;--text:#f0f0f0;--muted:#94a3b8;--accent:#f59e0b;}
+*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:2rem;}
+h1{text-align:center;margin-bottom:0.5rem;}p.subtitle{text-align:center;color:var(--muted);margin-bottom:2rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(450px,1fr));gap:1.5rem;}
+.chart{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;}
+.chart h3{font-size:1rem;margin-bottom:0.5rem;color:var(--accent);}
+.loading{color:var(--muted);font-size:0.9rem;text-align:center;padding:2rem;}
+</style>
+</head>
+<body>
+<h1>📈 PMO Analytics Dashboard</h1>
+<p class="subtitle">Capital portfolio governance and federal spending intelligence</p>
+<div class="grid">
+<div class="chart"><h3>Capital Expenses by Agency</h3><div id="capital-agency" class="loading">Loading...</div></div>
+<div class="chart"><h3>Expense Trend Over Time</h3><div id="capital-trend" class="loading">Loading...</div></div>
+<div class="chart"><h3>Expense Category Breakdown</h3><div id="capital-category" class="loading">Loading...</div></div>
+<div class="chart"><h3>Top Projects by Budget</h3><div id="capital-projects" class="loading">Loading...</div></div>
+<div class="chart"><h3>Expenditure vs Plan</h3><div id="capital-plan" class="loading">Loading...</div></div>
+<div class="chart"><h3>Vendor Concentration (HHI)</h3><div id="capital-hhi" class="loading">Loading...</div></div>
+</div>
+
+<script>
+const layout={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#f0f0f0',family:'Inter,sans-serif'},margin:{t:30,r:20,b:50,l:60}};
+const config={responsive:true,displayModeBar:false};
+
+// Capital by Agency
+Papa.parse('https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/data/ntd_capital_expenses.csv',{download:true,header:true,complete:function(r){
+const agencies={},amounts={};
+r.data.forEach(d=>{if(d.agency&&d.amount){agencies[d.agency]=(agencies[d.agency]||0)+1;amounts[d.agency]=(amounts[d.agency]||0)+parseFloat(d.amount);}});
+const sorted=Object.entries(amounts).sort((a,b)=>b[1]-a[1]).slice(0,15);
+Plotly.newPlot('capital-agency',[{
+  x:sorted.map(x=>x[0]),y:sorted.map(x=>x[1]),type:'bar',
+  marker:{color:'#f59e0b',line:{color:'#fbbf24',width:1}}
+}],{...layout,xaxis:{tickangle:-45},yaxis:{title:'Amount ($)'}},config);
+}});
+
+// Trend Over Time
+Papa.parse('https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/data/ntd_capital_expenses.csv',{download:true,header:true,complete:function(r){
+const years={};
+r.data.forEach(d=>{if(d.year&&d.amount){years[d.year]=(years[d.year]||0)+parseFloat(d.amount);}});
+Plotly.newPlot('capital-trend',[{
+  x:Object.keys(years).sort(),y:Object.values(years),type:'scatter',mode:'lines+markers',
+  line:{color:'#06b6d4',width:3},marker:{size:8,color:'#06b6d4'}
+}],{...layout,xaxis:{title:'Year'},yaxis:{title:'Total Amount ($)'}},config);
+}});
+
+// Category Breakdown
+Papa.parse('https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/data/ntd_capital_expenses.csv',{download:true,header:true,complete:function(r){
+const cats={};
+r.data.forEach(d=>{if(d.category&&d.amount){cats[d.category]=(cats[d.category]||0)+parseFloat(d.amount);}});
+Plotly.newPlot('capital-category',[{
+  labels:Object.keys(cats),values:Object.values(cats),type:'pie',
+  hole:0.4,marker:{colors:['#f59e0b','#06b6d4','#8b5cf6','#10b981','#ef4444','#22d3ee','#a78bfa','#fbbf24']}
+}],{...layout},config);
+}});
+
+// Top Projects
+Papa.parse('https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/data/ntd_capital_expenses.csv',{download:true,header:true,complete:function(r){
+const projects=[];
+r.data.forEach(d=>{if(d.project_name&&d.amount){projects.push({name:d.project_name,amount:parseFloat(d.amount)});}});
+projects.sort((a,b)=>b.amount-a.amount).slice(0,15);
+Plotly.newPlot('capital-projects',[{
+  x:projects.map(p=>p.name),y:projects.map(p=>p.amount),type:'bar',
+  marker:{color:'#8b5cf6',line:{color:'#a78bfa',width:1}}
+}],{...layout,xaxis:{tickangle:-45},yaxis:{title:'Budget ($)'}},config);
+}});
+
+// Expenditure vs Plan
+Papa.parse('https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/data/ntd_capital_expenses.csv',{download:true,header:true,complete:function(r){
+const planned=[],actual=[],labels=[];
+r.data.forEach((d,i)=>{if(i<20&&d.planned&&d.amount){labels.push(d.project_name||d.agency);planned.push(parseFloat(d.planned));actual.push(parseFloat(d.amount));}});
+Plotly.newPlot('capital-plan',[{
+  x:labels,y:planned,name:'Planned',type:'bar',marker:{color:'#06b6d4'}
+},{
+  x:labels,y:actual,name:'Actual',type:'bar',marker:{color:'#f59e0b'}
+}],{...layout,xaxis:{tickangle:-45},yaxis:{title:'Amount ($)'},barmode:'group'},config);
+}});
+
+// HHI Simulation
+Papa.parse('https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/data/ntd_capital_expenses.csv',{download:true,header:true,complete:function(r){
+const vendors={};
+r.data.forEach(d=>{if(d.vendor&&d.amount){vendors[d.vendor]=(vendors[d.vendor]||0)+parseFloat(d.amount);}});
+const total=Object.values(vendors).reduce((a,b)=>a+b,0);
+const shares=Object.values(vendors).map(v=>(v/total*100));
+const hhi=shares.reduce((a,b)=>a+b*b,0);
+Plotly.newPlot('capital-hhi',[{
+  x:Object.keys(vendors).slice(0,10),y:Object.values(vendors).slice(0,10),type:'bar',
+  marker:{color:'#10b981',line:{color:'#34d399',width:1}}
+}],{...layout,xaxis:{tickangle:-45},yaxis:{title:'Amount ($)'},title:{text:'Vendor Concentration (HHI: '+hhi.toFixed(0)+')',font:{color:'#f0f0f0',size:14}}},config);
+}});
+</script>
+</body>
+</html>

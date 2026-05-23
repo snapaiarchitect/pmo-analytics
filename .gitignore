@@ -1,0 +1,23 @@
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+
+# Data exceptions — real datasets
+!projects/**/data/*.csv
+!projects/**/data/*.txt
+!projects/**/data/*.json
+
+# Figures
+!projects/**/figures/*.png
+!projects/**/figures/*.jpg
+
+# Keep notebooks
+!projects/**/notebooks/*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
