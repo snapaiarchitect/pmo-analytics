@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  capital-portfolio:
+    build: .
+    command: streamlit run projects/capital-portfolio-governance/dashboard.py --server.port=8511 --server.address=0.0.0.0
+    ports:
+      - "8511:8511"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8511/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  executive-decision:
+    build: .
+    command: streamlit run projects/executive-decision-support/dashboard.py --server.port=8512 --server.address=0.0.0.0
+    ports:
+      - "8512:8512"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8512/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  federal-risk:
+    build: .
+    command: streamlit run projects/federal-project-risk-schedule-intelligence/dashboard.py --server.port=8513 --server.address=0.0.0.0
+    ports:
+      - "8513:8513"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8513/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  program-performance:
+    build: .
+    command: streamlit run projects/program-performance-dashboard/dashboard.py --server.port=8514 --server.address=0.0.0.0
+    ports:
+      - "8514:8514"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8514/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
