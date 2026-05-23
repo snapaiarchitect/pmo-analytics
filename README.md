@@ -294,6 +294,21 @@ sierra-pmo-analytics/
 | **Requests** | REST API clients for 7+ government sources |
 | **Statsmodels** | Statistical modeling and forecasting |
 
+### 🐳 Docker (One-Command Launch)
+
+```bash
+git clone https://github.com/snapaiarchitect/pmo-analytics.git
+cd pmo-analytics
+docker compose up
+```
+
+| Dashboard | URL |
+|-----------|-----|
+| Capital Portfolio Governance | http://localhost:8511 |
+| Executive Decision Support | http://localhost:8512 |
+| Federal Risk & Schedule | http://localhost:8513 |
+| Program Performance | http://localhost:8514 |
+
 ---
 
 ## Contact
