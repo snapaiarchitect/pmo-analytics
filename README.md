@@ -60,9 +60,9 @@ EVM and portfolio governance are core PMO competencies — but most candidates h
 
 **Key Figures:**
 
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/capital-portfolio-governance/figures/01_agencies_by_obligation.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/capital-portfolio-governance/figures/07_capital_by_mode.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/capital-portfolio-governance/figures/10_rehab_vs_expansion.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/capital-portfolio-governance/figures/01_agencies_by_obligation.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/capital-portfolio-governance/figures/07_capital_by_mode.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/capital-portfolio-governance/figures/10_rehab_vs_expansion.png" width="49%">
 
 > **Peak insight:** Orange Line leads with 31 stations; Union Station peaks at 11,361 entries+exits; recovery ratios exceed 3.7x historical average at several stations.
 
@@ -97,9 +97,9 @@ Decision support and scenario modeling are what separate analysts who describe d
 
 **Key Figures:**
 
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/executive-decision-support/figures/01_unemployment_trend.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/executive-decision-support/figures/10_edu_poverty_donut.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/executive-decision-support/figures/14_scenario_comparison.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/executive-decision-support/figures/01_unemployment_trend.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/executive-decision-support/figures/10_edu_poverty_donut.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/executive-decision-support/figures/14_scenario_comparison.png" width="49%">
 
 > **Peak insight:** DC unemployment trended downward post-COVID; education-poverty correlation surfaces clear policy leverage points; scenario modeling projects outcomes before budget votes.
 
@@ -136,9 +136,9 @@ Risk classification, Monte Carlo forecasting, and portfolio heatmaps are exactly
 
 **Key Figures:**
 
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/federal-project-risk-schedule-intelligence/figures/01_risk_cell05_fig00.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/federal-project-risk-schedule-intelligence/figures/02_schedule_cell05_fig00.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/federal-project-risk-schedule-intelligence/figures/03_risk_cell11_fig01.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/federal-project-risk-schedule-intelligence/figures/01_risk_cell05_fig00.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/federal-project-risk-schedule-intelligence/figures/02_schedule_cell05_fig00.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/federal-project-risk-schedule-intelligence/figures/03_risk_cell11_fig01.png" width="49%">
 
 > **Peak insight:** 94.6% of sampled contracts exceed 3 years in duration — a structural reality of federal procurement, not a model prediction. Award amount and NAICS code are the strongest correlates of duration. Monte Carlo produces actionable P50/P80/P95 intervals per contract.
 
@@ -173,9 +173,9 @@ Procurement analytics and vendor risk assessment are high-value PMO capabilities
 
 **Key Figures:**
 
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/figures/01_summary_overview.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/figures/03_state_heatmap.png" width="49%">
-<img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-pmo-analytics/main/projects/program-performance-dashboard/figures/03_metro_timeseries.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/program-performance-dashboard/figures/01_summary_overview.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/program-performance-dashboard/figures/03_state_heatmap.png" width="49%">
+<img src="https://raw.githubusercontent.com/snapaiarchitect/pmo-analytics/main/projects/program-performance-dashboard/figures/03_metro_timeseries.png" width="49%">
 
 > **Peak insight:** FPDS holds 60M+ procurement actions across 45+ years; state heatmaps reveal geographic concentration; metro timeseries track capital efficiency trends by urban area.
 
@@ -214,7 +214,7 @@ I mapped the FPDS (Federal Procurement Data System) data architecture and docume
 
 ```bash
 # Clone the repository
-git clone https://github.com/gosidehustlesisi/sierra-pmo-analytics.git
+git clone https://github.com/snapaiarchitect/pmo-analytics.git
 cd sierra-pmo-analytics
 
 # Install dependencies
