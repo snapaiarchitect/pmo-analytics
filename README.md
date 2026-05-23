@@ -31,6 +31,12 @@
 
 ---
 
+## 🚀 Live Portfolio
+
+**[👉 goaiarchitect.io](https://goaiarchitect.io)** — Explore the full interactive portfolio with all projects, dashboards, and visualizations.
+
+---
+
 ## About This Work
 
 I analyze complex data at scale, architect AI systems that automate it, and visualize the story so stakeholders act on it.
