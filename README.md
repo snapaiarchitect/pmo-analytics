@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://avatars.githubusercontent.com/gosidehustlesisi" width="120" style="border-radius: 50%;" alt="Sierra Napier avatar">
+  <img src="https://avatars.githubusercontent.com/snapaiarchitect" width="120" style="border-radius: 50%;" alt="Sierra Napier avatar">
   <h1>SIERRA PMO ANALYTICS</h1>
   <p><strong>Real USASpending grants, real FPDS contracts, real GAO recommendations — zero synthetic records.</strong></p>
   <p><strong>Sample of 60M+ USASpending.gov database · 1,001 real records · 4 projects · 31 notebooks · 68 charts · 3 dashboards</strong></p>
@@ -301,7 +301,7 @@ sierra-pmo-analytics/
 | Platform | URL |
 |----------|-----|
 | 💻 **Portfolio Website** | [e3-ai.com](https://e3-ai.com) |
-| 🐙 **GitHub** | [github.com/gosidehustlesisi](https://github.com/gosidehustlesisi) |
+| 🐙 **GitHub** | [github.com/snapaiarchitect](https://github.com/snapaiarchitect) |
 | 💼 **LinkedIn** | [linkedin.com/in/sierran](https://linkedin.com/in/sierran) |
 | 🌐 **Company** | [e3-ai.com](https://e3-ai.com) |
 
